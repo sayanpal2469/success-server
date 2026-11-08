@@ -34,6 +34,10 @@ export function createApp() {
   app.use(express.json({ limit: '2mb' }));
   app.use(pinoHttp({ logger, autoLogging: { ignore: (req) => req.url === '/api/v1/health' }, customLogLevel: (_req, res, err) => (err || res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info') }));
 
+  app.get('/', (_req, res) => {
+    res.type('text').send('Welcome to Success Tutorials');
+  });
+
   app.get('/api/v1/health', (_req, res) => {
     res.json({ ok: mongoose.connection.readyState === 1, time: new Date() });
   });
