@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+uploads
+coverage
+api-deploy.zip
+src.zip
